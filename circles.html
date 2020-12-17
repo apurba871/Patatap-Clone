@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Cirlces</title>
-	<link rel="stylesheet" type="text/css" href="circles.css">
+	<title>Circles</title>
 	<script type="text/javascript" src="paper-full.js"></script>
+	<link rel="stylesheet" type="text/css" href="circles.css">
 	<script type="text/paperscript" canvas="myCanvas">
-	
-	function onKeyDown(event) {
-		new Path.Circle(new Point(Math.random()*view.size.width + 1, Math.random()*view.size.height + 1), 10).fillColor = "orange";
-	}
-</script>
+		var circles = [];
+		function onKeyDown(event) {
+			var maxPoint = new Point(view.size.width, view.size.height);
+			var randomPoint = Point.random();
+			var point = maxPoint * randomPoint;
+			var newCircle = new Path.Circle(point, 200);
+			newCircle.fillColor = "orange";
+			circles.push(newCircle);
+		}
+
+		function onFrame(event) {
+			for (var i = 0; i < circles.length; ++i) {
+				circles[i].fillColor.hue += 1;
+			}
+		}
+	</script>
 </head>
 <body>
 	<canvas id="myCanvas" resize></canvas>
