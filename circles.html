@@ -6,11 +6,8 @@
 	<script type="text/javascript" src="paper-full.js"></script>
 	<script type="text/paperscript" canvas="myCanvas">
 	
-	for (var i = 0; i < 10; i++) {
-		for (var j = 0; j < 10; ++j) {
-			var myCircle = new Path.Circle(new Point(i * 100, j * 100), 10);
-			myCircle.fillColor = 'pink';
-		}
+	function onKeyDown(event) {
+		new Path.Circle(new Point(Math.random()*view.size.width + 1, Math.random()*view.size.height + 1), 10).fillColor = "orange";
 	}
 </script>
 </head>
